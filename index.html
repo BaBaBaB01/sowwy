@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOWWYYYY</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom right, #f8cfd3, #e5e1f0);
+            font-family: 'Arial', sans-serif;
+            color: #4a2c2a;
+        }
+        h1 {
+            font-family: 'Cursive', sans-serif;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .gift {
+            width: 100px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .gift:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            display: none;
+            font-size: 2em;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .kisses {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .kiss {
+            position: absolute;
+            font-size: 2em;
+            animation: fly 2s forwards;
+        }
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(calc(-50% + 300px), calc(-100% - 50px));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>OPEN THE GIFT CUTUU</h1>
+    <img class="gift" src="https://img.icons8.com/color/100/000000/gift.png" alt="Gift Icon" id="gift-icon">
+    <div class="message" id="message">I'M SORRY BABYDOLL! 💖</div>
+    <div class="kisses" id="kisses"></div>
+
+    <script>
+        const giftIcon = document.getElementById('gift-icon');
+        const message = document.getElementById('message');
+        const kissesContainer = document.getElementById('kisses');
+
+        giftIcon.addEventListener('click', () => {
+            message.style.display = 'block';
+            kissesContainer.style.display = 'block';
+            setInterval(() => {
+
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const kiss = document.createElement('div');
+                    kiss.className = 'kiss';
+                    kiss.innerHTML = '💋';
+                    kiss.style.left = `${Math.random() * 100}vw`;
+                    kiss.style.animationDelay = `${Math.random() * 2}s`;
+                    kissesContainer.appendChild(kiss);
+                    
+                    setTimeout(() => {
+                        kiss.remove();
+                    }, 2000);
+                }, i * 100);
+            }}, 1000)
+
+            setInterval(() => {
+                message.innerHTML = "PLEASE FORGIVE MEEEE 💕🌷🌷";
+            }, 3000);
+            
+            setInterval(() => {
+                message.innerHTML = "I LOVE YOUUUU 💕✨🌷";
+            }, 6000);
+        });
+    </script>
+</body>
+</html>
